@@ -5,7 +5,7 @@ font-family: "Playfair Display", serif;
 font-family: "Poppins", sans-serif;
 */
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -13,7 +13,7 @@ font-family: "Poppins", sans-serif;
 
 /* Navbar Css */
 
-.navbar{
+.navbar {
   font-family: "Poppins", sans-serif;
   font-size: 1.3rem;
   line-height: 1.7rem;
@@ -24,14 +24,133 @@ font-family: "Poppins", sans-serif;
   border-bottom: 0 solid gray !important;
 }
 
-.navbar-brand{
-  font-size: 1.5rem;
-}
-
-.nav-link{
+.nav-link {
   font-weight: 400 !important;
 }
 
-.active{
+.active {
   border-bottom: 1.5px solid black;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-family: 'roboto', 'sans-serif';
+  letter-spacing: 3px;
+}
+
+
+/* Footer CSS */
+
+.symbols {
+  color: white;
+  display: flex;
+  width: 20vw;
+  justify-content: space-around;
+}
+
+.footer-essentials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.footer-links {
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 1vw;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .footer-essentials {
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-essentials {
+    flex-direction: column;
+    font-size: 1.25rem;
+  }
+
+  .symbols {
+    width: 50vw;
+    justify-content: space-evenly;
+  }
+
+  .footer-links {
+    font-size: 1rem;
+  }
+
+  .footer-links a {
+    margin: 0 0.5vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-essentials {
+    font-size: 1rem;
+  }
+
+  .symbols {
+    width: 70vw;
+    align-items: center;
+  }
+
+  .symbols a {
+    margin: 0.5rem 0;
+  }
+
+  .footer-links {
+    font-size: 0.9rem;
+  }
+
+  .footer-links a {
+    margin: 0 0.5vw;
+  }
+}
+
+/*Page not found css*/
+.pnf{
+  display: flex;
+  min-height: 65vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pnf-title{
+  font-size: 100px;
+  font-weight: 700;
+}
+
+.pnf-heading{
+  font-weight: normal;
+}
+
+.pnf-btn{
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+/*Contact Us*/
+.contactus {
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
