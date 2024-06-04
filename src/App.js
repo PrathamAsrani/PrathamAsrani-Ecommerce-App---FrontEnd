@@ -4,6 +4,7 @@ import AboutUs from "./Pages/AboutUs";
 import PagenotFound from "./Pages/PagenotFound";
 import HomePage from "./Pages/HomePage";
 import Register from "./Pages/Auth/Register";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
