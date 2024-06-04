@@ -154,3 +154,52 @@ font-family: "Poppins", sans-serif;
   align-items: center;
   justify-content: center;
 }
+
+/*Register CSS*/
+/* Styles for large-width devices */
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 80vh;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; /* Ensure no overflow */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .register {
+    flex-direction: column;
+    justify-content: center; /* Center items vertically */
+    padding: 1em; /* Add some padding for mobile devices */
+  }
+}
+
+.makeFlex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.mb-3 {
+  margin-left: 1vw;
+  box-sizing: border-box;
+}
+
+.registerBTN {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box;
+  max-width: 100%; /* Prevent width overflow */
+  max-height: 100%; /* Prevent height overflow */
+}
+
+/* Additional styles to ensure responsiveness and prevent overflow */
+.registerBTN > * {
+  max-width: 100%; /* Ensure children do not overflow */
+  max-height: 100%; /* Ensure children do not overflow */
+  box-sizing: border-box;
+}

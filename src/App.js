@@ -3,12 +3,14 @@ import ContactUs from "./Pages/ContactUs";
 import AboutUs from "./Pages/AboutUs";
 import PagenotFound from "./Pages/PagenotFound";
 import HomePage from "./Pages/HomePage";
+import Register from "./Pages/Auth/Register";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="*" element={<PagenotFound />} />
