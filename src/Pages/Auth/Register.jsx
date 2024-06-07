@@ -6,30 +6,41 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
-    const [Name, setName] = useState("");
-    const [Email, setEmail] = useState("");
-    const [Password, setPassword] = useState("");
-    const [Phone, setPhone] = useState("");
-    const [Address, setAddress] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-        console.log(process.env.REACT_APP_API);
         e.preventDefault();
-        try{
-            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`, {name: Name, email: Email, password: Password, phone: Phone, address: Address});
-            if(res.data.status){
+        try {
+            console.log(name,
+                email,
+                password,
+                phone,
+                address);
+            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`, {
+                name,
+                email,
+                password,
+                phone,
+                address
+            });
+            console.log(res.data);
+            if (res.data.success) {
                 toast.success(res.data.message);
                 navigate('/login');
-            }else{
+            } else {
                 toast.error(res.data.message);
             }
-        }catch(err){
+        } catch (err) {
             console.log(err);
-            toast.error(`Error: ${err}`);
+            toast.error(`Error: ${err.message}`);
         }
-        toast.success("Registered Successfully");
     }
+
 
     return (
         <Layout title={"Register - Shop Now"}>
@@ -39,26 +50,26 @@ const Register = () => {
                     <div className='makeFlex'>
                         <div className="mb-3">
                             <label htmlFor="Name" className="form-label">Name*</label>
-                            <input type="text" value={Name} onChange={(e) => { setName(e.target.value) }} className="form-control" id="Name" required />
+                            <input type="text" value={name} onChange={(e) => { setName(e.target.value) }} className="form-control" id="Name" required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="Email" className="form-label">Email*</label>
-                            <input type="email" value={Email} onChange={(e) => { setEmail(e.target.value) }} className="form-control" id="Email" required />
+                            <input type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} className="form-control" id="Email" required />
                         </div>
                     </div>
                     <div className='makeFlex'>
                         <div className="mb-3">
                             <label htmlFor="Password" className="form-label">Password*</label>
-                            <input type="password" value={Password} onChange={(e) => { setPassword(e.target.value) }} className="form-control" id="Password" required />
+                            <input type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} className="form-control" id="Password" required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="Phone" className="form-label">Phone*</label>
-                            <input type="tel" value={Phone} onChange={(e) => { setPhone(e.target.value) }} className="form-control" id="Phone" required />
+                            <input type="tel" value={phone} onChange={(e) => { setPhone(e.target.value) }} className="form-control" id="Phone" required />
                         </div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="Address" className="form-label">Address*</label>
-                        <input type="text" value={Address} onChange={(e) => { setAddress(e.target.value) }} className="form-control" id="Address" required />
+                        <input type="text" value={address} onChange={(e) => { setAddress(e.target.value) }} className="form-control" id="Address" required />
                     </div>
                     <div className="registerBTN">
                         <button type="submit" className="btn btn-primary">Submit</button>
