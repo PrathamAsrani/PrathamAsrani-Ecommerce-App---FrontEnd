@@ -3,11 +3,13 @@ import Layout from '../../Layout/Layout'
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Components/auth';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [auth, setAuth] = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,9 +20,13 @@ const Login = () => {
       });
       if (res && res.data.success) {
         toast.success(res.data.message);
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
+        setAuth({
+          ...auth,
+          user: res.data.user,
+          token: res.data.token
+        });
+        localStorage.setItem('auth', JSON.stringify(res.data));
+        navigate("/");
       } else {
         toast.error(res.data.message);
       }
