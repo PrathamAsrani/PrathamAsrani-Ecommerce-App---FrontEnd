@@ -3,7 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import { Helmet } from "react-helmet"
 
-const Layout = ({ children, title, description, keywords, author }) => {
+const Layout = ({ children, title = `Shop Now`, description = `MERN Stack Project`, keywords = `MERN, React, MongoDB, Express.js, Node.js`, author = `Pratham Asrani` }) => {
   return (
     <div>
       <Helmet>
@@ -20,13 +20,6 @@ const Layout = ({ children, title, description, keywords, author }) => {
       <Footer />
     </div>
   )
-}
-
-Layout.defaultProps = {
-  title: `Shop Now`,
-  description: `MERN Stack Project`,
-  keywords: `MERN, React, MongoDB, Express.js, Node.js`,
-  author: `Pratham Asrani`
 }
 
 export default Layout
