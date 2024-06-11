@@ -7,17 +7,20 @@ const Spinner = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    useEffect(() => {
+    const callHelper = () => {
         toast.error(`Unauthorized access`);
-    }, [])
+    }
 
     useEffect(() => {
         const interval = setInterval(() => {
             setCount((prevValue) => --prevValue);
         }, 1000);
-        count === 0 && navigate('/login',{
-            state: location.pathname
-        });
+        if(count === 0){
+            callHelper();
+            navigate('/login',{
+                state: location.pathname
+            });
+        }
         return () => clearInterval(interval)
     }, [count, navigate, location]);
 

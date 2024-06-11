@@ -20,7 +20,7 @@ const PrivateRoute = () => {
         if(auth?.token) authCheck();
     }, [auth?.token]);
 
-    return ok ? <Outlet /> : <Spinner />;
+    return ok === true ? <Outlet /> : <Spinner />;
 }
 
 export default PrivateRoute

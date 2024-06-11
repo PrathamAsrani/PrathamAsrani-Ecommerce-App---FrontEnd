@@ -5,6 +5,7 @@ import PagenotFound from "./Pages/PagenotFound";
 import HomePage from "./Pages/HomePage";
 import Register from "./Pages/Auth/Register";
 import Login from "./Pages/Auth/Login";
+import ForgotPassword from "./Pages/Auth/ForgotPassword";
 import { AuthProvider } from "./Components/auth";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/dashboard" element={<PrivateRoute />}>

@@ -50,8 +50,8 @@ const Login = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{ width: "20vw", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
-                className="form-control"
+                style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
+                className="form-control login-input"
                 id="Email"
                 required
               />
@@ -63,14 +63,15 @@ const Login = () => {
               type="password"
               value={password}
               onChange={(e) => { setPassword(e.target.value) }}
-              style={{ width: "20vw", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
-              className="form-control"
+              style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
+              className="form-control login-input"
               id="Password"
               required
             />
           </div>
           <div className="registerBTN">
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="button" className="btn btn-primary" style={{marginRight:"1vw"}} onClick={() => {navigate('/forgot-password')}}>Forgot Password</button>
+            <button type="submit" className="btn btn-primary" style={{marginLeft:"1vw"}}>Submit</button>
           </div>
         </form>
 

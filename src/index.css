@@ -40,82 +40,90 @@ font-family: "Poppins", sans-serif;
 }
 
 
-/* Footer CSS */
-
-.symbols {
-  color: white;
-  display: flex;
-  width: 20vw;
-  justify-content: space-around;
+/* Footer.css */
+.footer {
+  background-color: #fff;
+  padding: 20px 40px;
+  font-family: 'Poppins', sans-serif;
 }
 
-.footer-essentials {
+.footer-top {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  font-size: 1.5rem;
-  text-align: center;
 }
 
-.footer-links {
-  font-size: 1.15rem;
-  text-align: center;
+.footer-logo .logo-text {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.footer-logo .logo-highlight {
+  color: #f00; /* Adjust color as needed */
 }
 
 .footer-links a {
-  color: white;
-  margin: 0 1vw;
+  margin: 0 15px;
+  color: #000;
   text-decoration: none;
+  font-weight: 500;
 }
 
-@media (min-width: 768px) {
-  .footer-essentials {
-    flex-direction: row;
-    justify-content: space-evenly;
-    font-size: 1.5rem;
-  }
+.footer-links a:hover {
+  text-decoration: underline;
 }
 
-@media (max-width: 767px) {
-  .footer-essentials {
+.footer-social a {
+  margin: 0 10px;
+  color: #000;
+  font-size: 1.2rem;
+}
+
+.footer-divider {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-privacy a {
+  margin: 0 10px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-privacy a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .footer-top, .footer-bottom {
     flex-direction: column;
-    font-size: 1.25rem;
-  }
-
-  .symbols {
-    width: 50vw;
-    justify-content: space-evenly;
+    text-align: center;
   }
 
   .footer-links {
-    font-size: 1rem;
+    margin: 10px 0;
   }
 
-  .footer-links a {
-    margin: 0 0.5vw;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-essentials {
-    font-size: 1rem;
+  .footer-social {
+    margin: 10px 0;
   }
 
-  .symbols {
-    width: 70vw;
-    align-items: center;
-  }
-
-  .symbols a {
-    margin: 0.5rem 0;
-  }
-
-  .footer-links {
-    font-size: 0.9rem;
-  }
-
-  .footer-links a {
-    margin: 0 0.5vw;
+  .footer-privacy {
+    margin-top: 10px;
   }
 }
 
@@ -157,6 +165,11 @@ font-family: "Poppins", sans-serif;
 
 /*Register CSS*/
 /* Styles for large-width devices */
+
+.register-input{
+  width: 100%;
+}
+
 .register {
   display: flex;
   align-items: center;
@@ -188,10 +201,29 @@ font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
 
+/*Login CSS*/
+
+.login-input {
+  width: 20vw;
+}
+
+@media (max-width: 768px) {
+  .login-input {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-input {
+    width: 80vw;
+  }
+}
+
+
 .registerBTN {
   display: flex;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: space-evenly !important;
   box-sizing: border-box;
   max-width: 100%; /* Prevent width overflow */
   max-height: 100%; /* Prevent height overflow */

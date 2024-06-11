@@ -11,6 +11,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+    const [answer, setAnswer] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -21,14 +22,13 @@ const Register = () => {
                 email,
                 password,
                 phone,
-                address
+                address,
+                answer
             });
-            if(res) console.log(res.data);
+            if (res) console.log(res.data);
             if (res && res.data.success) {
                 toast.success(res.data.message);
-                setTimeout(() => {
-                    navigate('/login');
-                }, 3000);
+                navigate('/login');
             } else {
                 toast.error(res.data.message);
             }
@@ -46,27 +46,33 @@ const Register = () => {
                 <form onSubmit={handleSubmit}>
                     <div className='makeFlex'>
                         <div className="mb-3">
-                            <label htmlFor="Name" className="form-label">Name*</label>
+                            <label htmlFor="Name" className="form-label register-input">Name*</label>
                             <input type="text" value={name} onChange={(e) => { setName(e.target.value) }} className="form-control" id="Name" required />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="Email" className="form-label">Email*</label>
+                            <label htmlFor="Email" className="form-label register-input">Email*</label>
                             <input type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} className="form-control" id="Email" required />
                         </div>
                     </div>
                     <div className='makeFlex'>
                         <div className="mb-3">
-                            <label htmlFor="Password" className="form-label">Password*</label>
+                            <label htmlFor="Password" className="form-label register-input">Password*</label>
                             <input type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} className="form-control" id="Password" required />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="Phone" className="form-label">Phone*</label>
+                            <label htmlFor="Phone" className="form-label register-input">Phone*</label>
                             <input type="tel" value={phone} onChange={(e) => { setPhone(e.target.value) }} className="form-control" id="Phone" required />
                         </div>
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="Address" className="form-label">Address*</label>
-                        <input type="text" value={address} onChange={(e) => { setAddress(e.target.value) }} className="form-control" id="Address" required />
+                    <div className='makeFlex'>
+                        <div className="mb-3">
+                            <label htmlFor="Address" className="form-label register-input">Address*</label>
+                            <input type="text" value={address} onChange={(e) => { setAddress(e.target.value) }} className="form-control" id="Address" required />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="Answer" className="form-label register-input">first school name?*</label>
+                            <input type="text" value={answer} onChange={(e) => { setAnswer(e.target.value) }} className="form-control" id="Answer" required />
+                        </div>
                     </div>
                     <div className="registerBTN">
                         <button type="submit" className="btn btn-primary">Submit</button>
