@@ -20,7 +20,7 @@ const AdminPrivateRoute = () => {
         if(auth?.token) authCheck();
     }, [auth?.token]);
 
-    return ok === true ? <Outlet /> : <Spinner />;
+    return ok === true ? <Outlet /> : <Spinner path=''/>;
 }
 
 export default AdminPrivateRoute
