@@ -11,6 +11,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DashBoard from "./Pages/User/DashBoard";
 import PrivateRoute from "./Components/Routes/Private";
+import AdminPrivateRoute from "./Components/Routes/AdminRoute";
+import AdminDashBoard from "./Pages/Admin/AdminDashBoard";
 
 function App() {
   return (
@@ -25,7 +27,10 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/dashboard" element={<PrivateRoute />}>
-            <Route path="" element={<DashBoard />} />
+            <Route path="user" element={<DashBoard />} />
+          </Route>
+          <Route path="/dashboard" element={<AdminPrivateRoute />}>
+            <Route path="admin" element={<AdminDashBoard />} />
           </Route>
           <Route path="*" element={<PagenotFound />} />
         </Routes>
