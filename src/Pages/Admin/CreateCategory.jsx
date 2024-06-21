@@ -23,6 +23,7 @@ const CreateCategory = () => {
       const data = await axios.post(`${process.env.REACT_APP_API}/api/v1/category/create-category`, { name });
       toast.success(`${capitalize(name)} category added successfully`)
       console.log(data);
+      setName("");
       getAllCategory();
     } catch (err) {
       console.log(err);
@@ -68,7 +69,7 @@ const CreateCategory = () => {
   const getAllCategory = async () => {
     try {
       const data = await axios.get(`${process.env.REACT_APP_API}/api/v1/category/get-categories`);
-      if (data.data.success === true) {
+      if (data?.data?.success === true) {
         setCategories(data.data.category);
       }
     } catch (err) {
@@ -76,9 +77,11 @@ const CreateCategory = () => {
       toast.error(`Error: ${err}`);
     }
   }
+
   useEffect(() => {
     getAllCategory();
-  }, [])
+  }, []);
+
   return (
     <Layout title='DashBoard - Create Category'>
       <div className="container-fluid m-3 p-3">
