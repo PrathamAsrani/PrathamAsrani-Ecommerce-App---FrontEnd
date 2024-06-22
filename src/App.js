@@ -18,6 +18,7 @@ import CreateProduct from "./Pages/Admin/CreateProduct";
 import Users from "./Pages/Admin/Users";
 import Orders from "./Pages/User/Orders";
 import Profile from "./Pages/User/Profile";
+import Products from "./Pages/Admin/Products";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route path="admin" element={<AdminDashBoard />} />
             <Route path="admin/create-category" element={<CreateCategory />} />
             <Route path="admin/create-product" element={<CreateProduct />} />
+            <Route path="admin/products" element={<Products />} />
             <Route path="admin/users" element={<Users />} />
           </Route>
           <Route path="*" element={<PagenotFound />} />
