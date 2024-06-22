@@ -235,3 +235,8 @@ font-family: "Poppins", sans-serif;
   max-height: 100%; /* Ensure children do not overflow */
   box-sizing: border-box;
 }
+
+.product-link{
+  text-decoration: none !important;
+  color: black !important;
+}
