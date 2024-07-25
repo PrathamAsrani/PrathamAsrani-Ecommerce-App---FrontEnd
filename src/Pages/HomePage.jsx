@@ -9,6 +9,19 @@ const HomePage = () => {
   const [categories, setCategories] = useState([])
   const [checked, setChecked] = useState([])
   const [radio, setRadio] = useState([])
+  const [total, setTotal] = useState(0)
+  const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(false)
+
+  const getTotal = async () => {
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/product-count`)
+      console.log(res);
+      setTotal(res?.data?.total)
+    } catch (err) {
+      console.log(`error in getTotal homepage \n ${err}`)
+    }
+  }
 
   const handleFilter = async (value, id) => {
     let all = [...checked]
@@ -22,9 +35,12 @@ const HomePage = () => {
 
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/get-products`)
+      setLoading(true)
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product//product-list/${page}`)
+      setLoading(false)
       setProducts(data?.products)
     } catch (err) {
+      setLoading(false)
       console.log(err)
     }
   }
@@ -36,29 +52,47 @@ const HomePage = () => {
         setCategories(data.data.category);
       }
     } catch (err) {
-      console.log(err);
+      console.log(`error in loadMore \n ${err}`);
+    }
+  }
+
+  useEffect(() => {
+    if (page === 1)
+      return
+    loadMore()
+  }, [page])
+
+  const loadMore = async () => {
+    try {
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product//product-list/${page}`)
+      setLoading(false)
+      setProducts([...products, ...data?.products])
+    } catch (err) {
+      setLoading(false)
+      console.log(`error in loadMore \n ${err}`)
     }
   }
 
   useEffect(() => {
     getAllCategory()
+    getTotal()
   }, [])
 
   useEffect(() => {
-    if(checked.length == 0 && radio.length == 0) 
-        getAllProducts()
+    if (checked.length == 0 && radio.length == 0)
+      getAllProducts()
   }, [checked.length, radio.length])
 
   useEffect(() => {
-    if(checked.length || radio.length) 
+    if (checked.length || radio.length)
       filterProduct()
   }, [checked, radio])
 
-  const filterProduct = async() => {
-    try{
-      const {data} = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/product-filters`, {checked, radio})
+  const filterProduct = async () => {
+    try {
+      const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/product-filters`, { checked, radio })
       setProducts(data?.products)
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
   }
@@ -106,6 +140,16 @@ const HomePage = () => {
                 </div>
               </div>
             ))}
+          </div>
+          <div className='m-2 p-3'>
+            {products && products.length < total && (
+              <button className='btn btn-warning' onClick={(e) => {
+                e.preventDefault();
+                setPage(page + 1);
+              }}>
+                {loading ? "Loading..." : "Loadmore"}
+              </button>
+            )}
           </div>
         </div>
       </div>
