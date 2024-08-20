@@ -20,36 +20,39 @@ import Orders from "./Pages/User/Orders";
 import Profile from "./Pages/User/Profile";
 import Products from "./Pages/Admin/Products";
 import UpdateProduct from "./Pages/Admin/UpdateProduct";
+import { SearchProvider } from "./Components/searchAuth";
 
 
 function App() {
   return (
     <AuthProvider>
-      <ToastContainer />
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/dashboard" element={<PrivateRoute />}>
-            <Route path="user" element={<DashBoard />} />
-            <Route path="user/orders" element={<Orders />} />
-            <Route path="user/profile" element={<Profile />} />
-          </Route>
-          <Route path="/dashboard" element={<AdminPrivateRoute />}>
-            <Route path="admin" element={<AdminDashBoard />} />
-            <Route path="admin/create-category" element={<CreateCategory />} />
-            <Route path="admin/create-product" element={<CreateProduct />} />
-            <Route path="admin/product/:slug" element={<UpdateProduct />} />
-            <Route path="admin/products" element={<Products />} />
-            <Route path="admin/users" element={<Users />} />
-          </Route>
-          <Route path="*" element={<PagenotFound />} />
-        </Routes>
-      </Router>
+      <SearchProvider>
+        <ToastContainer />
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/dashboard" element={<PrivateRoute />}>
+              <Route path="user" element={<DashBoard />} />
+              <Route path="user/orders" element={<Orders />} />
+              <Route path="user/profile" element={<Profile />} />
+            </Route>
+            <Route path="/dashboard" element={<AdminPrivateRoute />}>
+              <Route path="admin" element={<AdminDashBoard />} />
+              <Route path="admin/create-category" element={<CreateCategory />} />
+              <Route path="admin/create-product" element={<CreateProduct />} />
+              <Route path="admin/product/:slug" element={<UpdateProduct />} />
+              <Route path="admin/products" element={<Products />} />
+              <Route path="admin/users" element={<Users />} />
+            </Route>
+            <Route path="*" element={<PagenotFound />} />
+          </Routes>
+        </Router>
+      </SearchProvider>
     </AuthProvider>
   );
 }
