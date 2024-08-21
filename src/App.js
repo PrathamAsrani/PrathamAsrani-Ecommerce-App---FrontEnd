@@ -21,6 +21,7 @@ import Profile from "./Pages/User/Profile";
 import Products from "./Pages/Admin/Products";
 import UpdateProduct from "./Pages/Admin/UpdateProduct";
 import { SearchProvider } from "./Components/searchAuth";
+import Search from "./Pages/Search";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/search" element={<Search />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
