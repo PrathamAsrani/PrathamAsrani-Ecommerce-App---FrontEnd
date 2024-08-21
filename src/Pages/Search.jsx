@@ -1,8 +1,10 @@
 import { Layout } from 'antd'
 import React from 'react'
 import { useSearch } from '../Components/searchAuth'
+import { useNavigate } from 'react-router-dom'
 
 const Search = () => {
+    const navigate = useNavigate()
     const [values, setValues] = useSearch()
     console.log(`vales: `, values)
     return (
@@ -21,7 +23,7 @@ const Search = () => {
                                     <h5 className="card-title">{p.name}</h5>
                                     <p className="card-text">{p.description.substring(0, 30)}</p>
                                     <p className="card-text">${p.price}</p>
-                                    <button href="#" className='btn ms-1 btn-primary'>More Details</button>
+                                    <button href="#" className='btn ms-1 btn-primary' onClick={() => {navigate(`product/${p.name}`)}} >More Details</button>
                                     <button href="#" className='btn ms-1 btn-secondary'>Add to Cart</button>
                                 </div>
                             </div>
